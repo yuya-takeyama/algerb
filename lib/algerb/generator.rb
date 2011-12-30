@@ -25,7 +25,7 @@ end
 
   def generate_autoloader_body(files)
     files.map do |file|
-      "autoload :#{file_to_class(file)}, '#{file}'"
-    end.join("\n") + "\n"
+      "autoload :#{file_to_class(file)}, '#{file}'\n"
+    end.join('')
   end
 end
