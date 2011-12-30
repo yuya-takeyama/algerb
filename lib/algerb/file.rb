@@ -11,4 +11,8 @@ class Algerb::File
     @path = path
     @file = remove_dir(path)
   end
+
+  def ==(another)
+    self.path == another.path and self.file == another.file
+  end
 end

@@ -23,4 +23,29 @@ describe Algerb::File do
     its(:path) { should == 'foo/bar/baz' }
     its(:file) { should == 'baz' }
   end
+
+  describe '#==' do
+    subject { a == b }
+
+    context 'when both has same path ("foo")' do
+      let(:a) { Algerb::File.new('foo') }
+      let(:b) { Algerb::File.new('foo') }
+
+      it { should be_true }
+    end
+
+    context 'when both has same path ("foo/bar")' do
+      let(:a) { Algerb::File.new('foo/bar') }
+      let(:b) { Algerb::File.new('foo/bar') }
+
+      it { should be_true }
+    end
+
+    context 'when path has different' do
+      let(:a) { Algerb::File.new('foo/bar') }
+      let(:b) { Algerb::File.new('foo/bar/bar') }
+
+      it { should be_false }
+    end
+  end
 end
