@@ -12,5 +12,13 @@ describe Algerb::Util do
         subject.should == 'Foo'
       end
     end
+
+    context 'with file name with alphabets and underscore' do
+      let(:file) { 'foo_bar' }
+
+      it 'should be CamelCase' do
+        subject.should == 'FooBar'
+      end
+    end
   end
 end
