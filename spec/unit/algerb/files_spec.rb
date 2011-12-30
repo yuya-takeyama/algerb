@@ -11,13 +11,13 @@ describe Algerb::Files do
     end
 
     context 'without sub directory' do
-      context 'with one one file' do
+      context 'with 1 file' do
         before { files.push('foo') }
 
         it { should == [Algerb::File.new('foo')] }
       end
 
-      context 'with two one file' do
+      context 'with 2 files' do
         before do
           files.push('foo')
           files.push('bar')
