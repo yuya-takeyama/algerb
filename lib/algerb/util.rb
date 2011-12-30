@@ -3,4 +3,8 @@ module Algerb::Util
   def file_to_class(file)
     file.split('_').map {|word| word.capitalize }.join('')
   end
+
+  def indentation(code, level)
+    code.split("\n").map {|line| ' ' * level + line + "\n" }.join('')
+  end
 end

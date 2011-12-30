@@ -21,4 +21,20 @@ describe Algerb::Util do
       end
     end
   end
+
+  describe '#indentation' do
+    subject { indentation(code, 2) }
+
+    context 'with single line' do
+      let(:code) { "foo\n" }
+
+      it { should == "  foo\n" }
+    end
+
+    context 'with multiple lines' do
+      let(:code) { "foo\nbar" }
+
+      it { should == "  foo\n  bar\n" }
+    end
+  end
 end
