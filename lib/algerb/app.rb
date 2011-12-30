@@ -9,7 +9,7 @@ class Algerb::App < Thor
 
   desc 'generate', 'Generates autoloader script'
   def generate
-    puts ::Algerb::Generator.new(target_files(options['target'])).generate
+    puts ::Algerb::Generator.new.generate(target_files(options['target']))
   end
 
   private
