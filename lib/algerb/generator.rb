@@ -1,8 +1,3 @@
-require 'algerb/util'
-require 'algerb/files'
-require 'algerb/files_builder'
-
-module Algerb; end
 class Algerb::Generator
   include Algerb::Util
 

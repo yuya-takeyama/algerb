@@ -1,7 +1,3 @@
-require 'algerb/file'
-
-module Algerb; end
-
 class Algerb::Files
   include ::Enumerable
 

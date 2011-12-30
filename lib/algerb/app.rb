@@ -1,4 +1,3 @@
-require 'algerb/generator'
 require 'thor'
 
 module Algerb; end

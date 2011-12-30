@@ -1,7 +1,3 @@
-require 'algerb/files'
-
-module Algerb; end
-
 class Algerb::FilesBuilder
   attr_reader :files
 

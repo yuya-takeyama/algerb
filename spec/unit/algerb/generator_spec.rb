@@ -1,4 +1,4 @@
-require 'algerb/generator'
+require 'spec_helper'
 
 describe Algerb::Generator do
   describe '#generate_autoloader_body' do

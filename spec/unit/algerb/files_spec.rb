@@ -1,4 +1,4 @@
-require 'algerb/files'
+require 'spec_helper'
 
 describe Algerb::Files do
   let(:root) { Algerb::Files.new }

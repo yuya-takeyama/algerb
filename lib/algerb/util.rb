@@ -1,4 +1,3 @@
-module Algerb; end
 module Algerb::Util
   def file_to_class(file)
     remove_ext(file).split('_').map {|word| word.capitalize }.join('')

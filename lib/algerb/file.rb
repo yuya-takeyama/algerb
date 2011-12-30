@@ -1,8 +1,3 @@
-require 'algerb/util'
-require 'algerb/files'
-
-module Algerb; end
-
 class Algerb::File
   include Algerb::Util
 
