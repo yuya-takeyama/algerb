@@ -48,3 +48,4 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   rspec
+  thor

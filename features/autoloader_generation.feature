@@ -25,8 +25,8 @@ Feature: Autoloader generation
     class Autoloader
       def self.register
         Object.module_eval <<-__EOF__
-          autoload :Foo, 'foo'
           autoload :Bar, 'bar'
+          autoload :Foo, 'foo'
         __EOF__
       end
     end
