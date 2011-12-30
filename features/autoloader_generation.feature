@@ -5,23 +5,25 @@ Feature: Autoloader generation
   Scenario: Autoloader generation for single file
     Given an empty file named "./lib/foo.rb"
     When I run `algerb`
-    Then the output should contain:
+    Then the file "./autoloader.rb" should contain exactly:
     """
     Object.module_eval <<-__EOF__
       autoload :Foo, 'foo'
     __EOF__
+
     """
 
   Scenario: Autoloader generation for multiple files
     Given an empty file named "./lib/foo.rb"
     And   an empty file named "./lib/bar.rb"
     When I run `algerb`
-    Then the output should contain:
+    Then the file "./autoloader.rb" should contain exactly:
     """
     Object.module_eval <<-__EOF__
       autoload :Bar, 'bar'
       autoload :Foo, 'foo'
     __EOF__
+
     """
 
   Scenario: Autoloader generation for library has nested structure.
@@ -29,7 +31,7 @@ Feature: Autoloader generation
     And   an empty file named "./lib/foo/bar.rb"
     And   an empty file named "./lib/foo/bar/baz.rb"
     When I run `algerb`
-    Then the output should contain:
+    Then the file "./autoloader.rb" should contain exactly:
     """
     Object.module_eval <<-__EOF__
       module Foo
@@ -40,4 +42,5 @@ Feature: Autoloader generation
       end
       autoload :Foo, 'foo'
     __EOF__
+
     """

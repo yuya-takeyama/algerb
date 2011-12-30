@@ -6,10 +6,13 @@ class Algerb::App < Thor
   default_task :generate
 
   method_option :target, :default => './lib'
+  method_option :output, :default => './autoloader.rb'
 
   desc 'generate', 'Generates autoloader script'
   def generate
-    puts ::Algerb::Generator.new.generate(target_files(options['target']))
+    open(options[:output], 'w') do |file|
+      file.puts ::Algerb::Generator.new.generate(target_files(options['target']))
+    end
   end
 
   private
