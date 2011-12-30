@@ -23,13 +23,13 @@ end
   end
 
   def generate_autoloader_body(files)
-    files = files.map {|file| file.sub(/\.rb$/, '') }.inject(Algerb::Files.new) do |files, file|
+    files = files.inject(Algerb::Files.new) do |files, file|
       files.push(file)
       files
     end
 
     files.files.map do |file|
-      "autoload :#{file_to_class(file.file)}, '#{file.path}'\n"
+      "autoload :#{file_to_class(file.file)}, '#{remove_ext(file.path)}'\n"
     end.join('')
   end
 end

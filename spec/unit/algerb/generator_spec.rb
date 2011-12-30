@@ -5,13 +5,13 @@ describe Algerb::Generator do
     subject { Algerb::Generator.new.generate_autoloader_body(files) }
 
     context 'with single file' do
-      let(:files) { ["foo"] }
+      let(:files) { ["foo.rb"] }
 
       it { should == "autoload :Foo, 'foo'\n" }
     end
 
     context 'with 2 files' do
-      let(:files) { ["foo", "bar"] }
+      let(:files) { ["foo.rb", "bar.rb"] }
 
       it do
         should == "autoload :Bar, 'bar'\n" +
