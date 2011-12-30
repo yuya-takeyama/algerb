@@ -37,4 +37,26 @@ describe Algerb::Util do
       it { should == "  foo\n  bar\n" }
     end
   end
+
+  describe '#remove_dir' do
+    subject { remove_dir(path) }
+
+    context 'without dir ("foo")' do
+      let(:path) { 'foo' }
+
+      it { should == 'foo' }
+    end
+
+    context 'with 1 nested dir ("foo/bar")' do
+      let(:path) { 'foo/bar' }
+
+      it { should == 'bar' }
+    end
+
+    context 'with 2 nested dir ("foo/bar/baz")' do
+      let(:path) { 'foo/bar/baz' }
+
+      it { should == 'baz' }
+    end
+  end
 end

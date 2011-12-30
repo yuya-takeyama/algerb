@@ -7,4 +7,8 @@ module Algerb::Util
   def indentation(code, level)
     code.split("\n").map {|line| ' ' * level + line + "\n" }.join('')
   end
+
+  def remove_dir(path)
+    path.sub(%r{^([a-z0-9\_]*/)*}, '')
+  end
 end
