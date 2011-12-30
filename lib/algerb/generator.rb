@@ -1,5 +1,9 @@
+require 'algerb/util'
+
 module Algerb; end
 class Algerb::Generator
+  include Algerb::Util
+
   def initialize(files)
     @files = files.map {|file| file.sub(/\.rb$/, '') }
   end
@@ -19,10 +23,5 @@ class Autoloader
 end
     __E_O_F__
     result
-  end
-
-  private
-  def file_to_class(file)
-    file.split(/_/).map {|word| word.capitalize }.join('')
   end
 end
