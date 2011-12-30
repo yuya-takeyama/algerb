@@ -42,13 +42,13 @@ Feature: Autoloader generation
     class Autoloader
       def self.register
         Object.module_eval <<-__EOF__
-          autoload :Foo, 'foo'
           module Foo
-            autoload :Bar, 'foo/bar'
             module Bar
               autoload :Baz, 'foo/bar/baz'
             end
+            autoload :Bar, 'foo/bar'
           end
+          autoload :Foo, 'foo'
         __EOF__
       end
     end
