@@ -20,5 +20,13 @@ describe Algerb::FilesBuilder do
       before { builder.add('foo/bar.rb') }
       it { should == Algerb::Files.new.add(Algerb::Files.new('foo').add(Algerb::File.new('bar.rb')))}
     end
+
+    context 'when 2 files ("foo/bar.rb", "foo/baz.rb") are added' do
+      before do
+        builder.add('foo/bar.rb')
+        builder.add('foo/baz.rb')
+      end
+      it { should == Algerb::Files.new.add(Algerb::Files.new('foo').add(Algerb::File.new('bar.rb')).add(Algerb::File.new('baz.rb'))) }
+    end
   end
 end
