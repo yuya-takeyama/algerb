@@ -3,15 +3,21 @@ require 'algerb/file'
 module Algerb; end
 
 class Algerb::Files
-  def initialize(files = [])
+  include ::Enumerable
+
+  attr_reader :name, :files
+
+  def initialize(name = nil, files = {})
+    @name = name
     @files = files
   end
 
-  def push(file)
-    @files << Algerb::File.new(file)
+  def add(file)
+    @files[file.name] = file
+    self
   end
 
-  def files
-    @files.sort_by {|file| file.path }
+  def ==(another)
+    self.name == another.name and self.files == another.files
   end
 end

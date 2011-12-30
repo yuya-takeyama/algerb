@@ -1,18 +1,24 @@
 require 'algerb/util'
+require 'algerb/files'
 
 module Algerb; end
 
 class Algerb::File
   include Algerb::Util
 
-  attr_reader :path, :file
+  FILE_PATTERN = %r{/?(a-z0-9\-_\.)$}i
 
-  def initialize(path)
-    @path = path
-    @file = remove_dir(path)
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def each(&block)
+    each_files(&block)
   end
 
   def ==(another)
-    self.path == another.path and self.file == another.file
+    self.name == another.name
   end
 end
