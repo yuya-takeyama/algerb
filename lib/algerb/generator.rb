@@ -13,7 +13,7 @@ class Autoloader
     Object.module_eval <<-__EOF__
     __E_O_F__
 
-    result += generate_autoloader_body(files).split("\n").map{|line| '      ' + line }.join("\n") + "\n"
+    result += indentation(generate_autoloader_body(files), 6)
 
     result += <<-__E_O_F__
     __EOF__
