@@ -7,13 +7,9 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the output should contain:
     """
-    class Autoloader
-      def self.register
-        Object.module_eval <<-__EOF__
-          autoload :Foo, 'foo'
-        __EOF__
-      end
-    end
+    Object.module_eval <<-__EOF__
+      autoload :Foo, 'foo'
+    __EOF__
     """
 
   Scenario: Autoloader generation for multiple files
@@ -22,14 +18,10 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the output should contain:
     """
-    class Autoloader
-      def self.register
-        Object.module_eval <<-__EOF__
-          autoload :Bar, 'bar'
-          autoload :Foo, 'foo'
-        __EOF__
-      end
-    end
+    Object.module_eval <<-__EOF__
+      autoload :Bar, 'bar'
+      autoload :Foo, 'foo'
+    __EOF__
     """
 
   Scenario: Autoloader generation for library has nested structure.
@@ -39,17 +31,13 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the output should contain:
     """
-    class Autoloader
-      def self.register
-        Object.module_eval <<-__EOF__
-          module Foo
-            module Bar
-              autoload :Baz, 'foo/bar/baz'
-            end
-            autoload :Bar, 'foo/bar'
-          end
-          autoload :Foo, 'foo'
-        __EOF__
+    Object.module_eval <<-__EOF__
+      module Foo
+        module Bar
+          autoload :Baz, 'foo/bar/baz'
+        end
+        autoload :Bar, 'foo/bar'
       end
-    end
+      autoload :Foo, 'foo'
+    __EOF__
     """
