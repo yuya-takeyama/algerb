@@ -59,4 +59,20 @@ describe Algerb::Util do
       it { should == 'baz' }
     end
   end
+
+  describe '#remove_ext' do
+    subject { remove_ext(path) }
+
+    context 'without directory ("foo.rb")' do
+      let(:path) { 'foo.rb' }
+
+      it { should == 'foo' }
+    end
+
+    context 'with directory ("foo/bar.rb")' do
+      let(:path) { 'foo/bar.rb' }
+
+      it { should == 'foo/bar' }
+    end
+  end
 end

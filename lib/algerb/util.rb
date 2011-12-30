@@ -11,4 +11,8 @@ module Algerb::Util
   def remove_dir(path)
     path.sub(%r{^([a-z0-9\_]*/)*}, '')
   end
+
+  def remove_ext(path)
+    path.sub(/\.rb$/, '')
+  end
 end
