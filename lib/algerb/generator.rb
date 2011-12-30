@@ -1,12 +1,11 @@
 require 'algerb/util'
+require 'algerb/files'
 
 module Algerb; end
 class Algerb::Generator
   include Algerb::Util
 
   def generate(files)
-    files = files.map {|file| file.sub(/\.rb$/, '') }
-
     result = <<-__E_O_F__
 class Autoloader
   def self.register
@@ -24,8 +23,13 @@ end
   end
 
   def generate_autoloader_body(files)
-    files.map do |file|
-      "autoload :#{file_to_class(file)}, '#{file}'\n"
+    files = files.map {|file| file.sub(/\.rb$/, '') }.inject(Algerb::Files.new) do |files, file|
+      files.push(file)
+      files
+    end
+
+    files.files.map do |file|
+      "autoload :#{file_to_class(file.file)}, '#{file.path}'\n"
     end.join('')
   end
 end

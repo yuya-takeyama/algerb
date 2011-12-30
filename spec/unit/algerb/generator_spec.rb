@@ -14,8 +14,8 @@ describe Algerb::Generator do
       let(:files) { ["foo", "bar"] }
 
       it do
-        should == "autoload :Foo, 'foo'\n" +
-                  "autoload :Bar, 'bar'\n"
+        should == "autoload :Bar, 'bar'\n" +
+                  "autoload :Foo, 'foo'\n"
       end
     end
   end
