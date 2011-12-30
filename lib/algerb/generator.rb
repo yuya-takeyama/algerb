@@ -28,8 +28,14 @@ end
     files.each do |file|
       builder.add file
     end
-    builder.files.files.sort_by {|name, file| name }.map do |name, file|
-      "autoload :#{file_to_class(file.name)}, '#{remove_ext(file.name)}'\n"
-    end.join('')
+    _generate_autoloader_body(builder.files.files)
+  end
+
+  private
+  def _generate_autoloader_body(files)
+    files.sort_by {|name, file| name }.inject('') do |result, key_value|
+      name, file = key_value
+      result += "autoload :#{file_to_class(file.name)}, '#{remove_ext(file.name)}'\n"
+    end
   end
 end
