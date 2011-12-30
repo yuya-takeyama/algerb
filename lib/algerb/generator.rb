@@ -1,5 +1,6 @@
 require 'algerb/util'
 require 'algerb/files'
+require 'algerb/files_builder'
 
 module Algerb; end
 class Algerb::Generator
@@ -23,13 +24,12 @@ end
   end
 
   def generate_autoloader_body(files)
-    files = files.inject(Algerb::Files.new) do |files, file|
-      files.push(file)
-      files
+    builder = Algerb::FilesBuilder.new
+    files.each do |file|
+      builder.add file
     end
-
-    files.files.map do |file|
-      "autoload :#{file_to_class(file.file)}, '#{remove_ext(file.path)}'\n"
+    builder.files.files.sort_by {|name, file| name }.map do |name, file|
+      "autoload :#{file_to_class(file.name)}, '#{remove_ext(file.name)}'\n"
     end.join('')
   end
 end
