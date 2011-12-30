@@ -13,7 +13,7 @@ class Autoloader
     Object.module_eval <<-__EOF__
     __E_O_F__
 
-    result += generate_autoload_body(files)
+    result += generate_autoloader_body(files).split("\n").map{|line| '      ' + line }.join("\n") + "\n"
 
     result += <<-__E_O_F__
     __EOF__
@@ -23,9 +23,9 @@ end
     result
   end
 
-  def generate_autoload_body(files)
+  def generate_autoloader_body(files)
     files.map do |file|
-      "      autoload :#{file_to_class(file)}, '#{file}'"
+      "autoload :#{file_to_class(file)}, '#{file}'"
     end.join("\n") + "\n"
   end
 end
