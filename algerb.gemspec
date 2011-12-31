@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.email = "sign.of.the.wolf.pentagram@gmail.com"
   s.executables = ["algerb"]
   s.extra_rdoc_files = [
+    "LICENSE.txt",
     "README.rdoc"
   ]
   s.files = [
@@ -22,6 +23,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "Guardfile",
+    "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
