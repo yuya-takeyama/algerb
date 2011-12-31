@@ -7,9 +7,7 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the file "./autoloader.rb" should contain exactly:
     """
-    Object.module_eval <<-__EOF__
-      autoload :Foo, 'foo'
-    __EOF__
+    autoload :Foo, 'foo'
 
     """
 
@@ -19,10 +17,8 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the file "./autoloader.rb" should contain exactly:
     """
-    Object.module_eval <<-__EOF__
-      autoload :Bar, 'bar'
-      autoload :Foo, 'foo'
-    __EOF__
+    autoload :Bar, 'bar'
+    autoload :Foo, 'foo'
 
     """
 
@@ -33,14 +29,12 @@ Feature: Autoloader generation
     When I run `algerb`
     Then the file "./autoloader.rb" should contain exactly:
     """
-    Object.module_eval <<-__EOF__
-      module Foo
-        module Bar
-          autoload :Baz, 'foo/bar/baz'
-        end
-        autoload :Bar, 'foo/bar'
+    module Foo
+      module Bar
+        autoload :Baz, 'foo/bar/baz'
       end
-      autoload :Foo, 'foo'
-    __EOF__
+      autoload :Bar, 'foo/bar'
+    end
+    autoload :Foo, 'foo'
 
     """

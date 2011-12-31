@@ -2,10 +2,7 @@ class Algerb::Generator
   include Algerb::Util
 
   def generate(files)
-    result = "Object.module_eval <<-__EOF__\n"
-    result += indentation(generate_autoloader_body(files), 2)
-    result += "__EOF__\n"
-    result
+    generate_autoloader_body(files)
   end
 
   def generate_autoloader_body(files)
