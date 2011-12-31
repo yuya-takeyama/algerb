@@ -5,9 +5,9 @@
 
 Gem::Specification.new do |s|
   s.name = "algerb"
-  s.version = "0.0.0.beta"
+  s.version = "0.0.0"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Yuya Takeyama"]
   s.date = "2011-12-31"
   s.description = "Generates autoloader script for your Ruby library."
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "algerb.gemspec",
     "autoloader.rb",
     "bin/algerb",
     "features/autoloader_generation.feature",
