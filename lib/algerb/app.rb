@@ -1,6 +1,5 @@
 require 'thor'
 
-module Algerb; end
 class Algerb::App < Thor
   default_task :generate
 
