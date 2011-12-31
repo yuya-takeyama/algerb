@@ -1,0 +1,9 @@
+= algerb
+
+Autoloader generator for Ruby.
+
+== Copyright
+
+Copyright (c) 2011 Yuya Takeyama. See LICENSE.txt for
+further details.
+

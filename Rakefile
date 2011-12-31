@@ -1,6 +1,19 @@
 require 'rubygems'
 require 'bundler'
-Bundler.setup(:default, :test)
+Bundler.setup(:default, :development)
+require 'rake'
+
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name        = 'algerb'
+  gem.homepage    = "http://github.com/yuya-takeyama/algerb"
+  gem.license     = 'MIT'
+  gem.summary     = %Q{Autoloader generator for Ruby}
+  gem.description = %Q{Generates autoloader script for your Ruby library.}
+  gem.email       = 'sign.of.the.wolf.pentagram@gmail.com'
+  gem.authors     = ['Yuya Takeyama']
+end
+Jeweler::RubygemsDotOrgTasks.new
 
 require 'cucumber/rake/task'
 Cucumber::Rake::Task.new
@@ -12,7 +25,24 @@ RSpec::Core::RakeTask.new do |spec|
   spec.rspec_opts = ['--color', '--format nested']
 end
 
+require 'rcov/rcovtask'
+Rcov::RcovTask.new do |test|
+  test.libs << 'spec'
+  test.pattern = 'spec/**/*_spec.rb'
+  test.verbose = true
+end
+
 desc 'Run tests, both RSpec and Cucumber'
 task :test => [:spec, :cucumber]
 
 task :default => :test
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "algerb #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
