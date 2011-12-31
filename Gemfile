@@ -9,4 +9,6 @@ group :development do
   gem 'guard-cucumber'
   gem 'rspec'
   gem 'guard-rspec'
+  gem 'jeweler', '~> 1.6.4'
+  gem 'rcov', '>= 0'
 end
