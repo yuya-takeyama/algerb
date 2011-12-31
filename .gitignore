@@ -1,0 +1,9 @@
+*.swp
+.bundle
+vendor
+tmp
+coverage
+rdoc
+doc
+.yardoc
+pkg
