@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
+require 'rubygems'
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 require 'bundler'
 Bundler.setup(:default)
-require File.dirname(__FILE__) + '/../autoloader.rb'
+require File.expand_path(File.dirname(__FILE__)) + '/../autoloader.rb'
 
 Algerb::App.start
