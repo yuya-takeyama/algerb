@@ -2,7 +2,7 @@ source "http://rubygems.org"
 
 gem 'thor'
 
-group :test do
+group :development do
   gem 'rake'
   gem 'cucumber'
   gem 'aruba'
