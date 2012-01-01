@@ -94,4 +94,31 @@ describe Algerb::Util do
       it { should == ['foo/bar', 'baz.rb'] }
     end
   end
+
+  describe '#split_path_as_head_and_tail' do
+    subject { split_path_as_head_and_tail(path) }
+
+    shared_examples_for 'head and tail are correct' do
+      it { should == [head, tail] }
+    end
+
+    context 'foo.rb' do
+      let(:path) { 'foo.rb' }
+      it { should == ['foo.rb'] }
+    end
+
+    context 'foo/bar.rb' do
+      let(:path) { 'foo/bar.rb' }
+      let(:head) { 'foo' }
+      let(:tail) { 'bar.rb' }
+      it_should_behave_like 'head and tail are correct'
+    end
+
+    context 'foo/bar/baz.rb' do
+      let(:path) { 'foo/bar/baz.rb' }
+      let(:head) { 'foo' }
+      let(:tail) { 'bar/baz.rb' }
+      it_should_behave_like 'head and tail are correct'
+    end
+  end
 end
