@@ -60,5 +60,15 @@ describe Algerb::Files do
       subject { root.find_by_path('foo.rb') }
       it { should == Algerb::File.new('foo.rb') }
     end
+
+    context 'when a file is matched in a directory' do
+      before do
+        root.add(Algerb::Files.new('foo',
+          'bar.rb' => Algerb::File.new('bar.rb')
+        ))
+      end
+      subject { root.find_by_path('foo/bar.rb') }
+      it { should == Algerb::File.new('bar.rb') }
+    end
   end
 end

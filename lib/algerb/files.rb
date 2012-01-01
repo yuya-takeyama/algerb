@@ -24,7 +24,15 @@ class Algerb::Files
   end
 
   def find_by_path(path)
-    files[path] if files.has_key?(path)
+    next_path, rest = path.split('/', 2)
+    if files.has_key?(next_path)
+      found = files[next_path]
+      if found.is_a?(Algerb::Files)
+        found.find_by_path(rest)
+      else
+        found
+      end
+    end
   end
 
   def ==(another)
