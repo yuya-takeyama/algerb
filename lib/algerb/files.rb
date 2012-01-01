@@ -28,7 +28,9 @@ class Algerb::Files
     next_path, rest = split_path_as_head_and_tail(path)
     if files.has_key?(next_path)
       found = files[next_path]
-      if found.is_a?(Algerb::Files)
+      if rest.nil?
+        found
+      elsif found.is_a?(Algerb::Files)
         found.find_by_path(rest)
       else
         found

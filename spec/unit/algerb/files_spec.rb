@@ -70,5 +70,21 @@ describe Algerb::Files do
       subject { root.find_by_path('foo/bar.rb') }
       it { should == Algerb::File.new('bar.rb') }
     end
+
+    context 'when a directory is matched in the root' do
+      before { root.add(Algerb::Files.new('foo')) }
+      subject { root.find_by_path('foo') }
+      it { should == Algerb::Files.new('foo') }
+    end
+
+    context 'when a directory is matched in a directory' do
+      before do
+        root.add(Algerb::Files.new('foo',
+          'bar' => Algerb::Files.new('bar')
+        ))
+      end
+      subject { root.find_by_path('foo/bar') }
+      it { should == Algerb::Files.new('bar') }
+    end
   end
 end
