@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Algerb::Generator do
   describe '#generate_autoloader_body' do
     subject { Algerb::Generator.new.generate_autoloader_body(files) }

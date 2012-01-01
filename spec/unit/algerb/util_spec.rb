@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Algerb::Util do
   include Algerb::Util
 

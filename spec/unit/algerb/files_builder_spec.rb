@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Algerb::FilesBuilder do
   let(:builder) { Algerb::FilesBuilder.new }
 
