@@ -13,9 +13,9 @@ describe Algerb::FilesBuilder do
     context 'when 1 file ("foo.rb") is added' do
       before { builder.add('foo.rb') }
       it {
-        should == Algerb::Files.root(
+        should == Algerb::Files.root({
                     'foo.rb' => Algerb::File.new('foo.rb'),
-                  )
+                  })
       }
     end
 
@@ -23,9 +23,9 @@ describe Algerb::FilesBuilder do
       before { builder.add('foo/bar.rb') }
       it {
         should == Algerb::Files.root(
-                    'foo' => Algerb::Files.new('foo',
+                    'foo' => Algerb::Files.new('foo', {
                       'bar.rb' => Algerb::File.new('bar.rb'),
-                    )
+                    })
                   )
       }
     end
@@ -37,10 +37,10 @@ describe Algerb::FilesBuilder do
       end
       it {
         should == Algerb::Files.root(
-                    'foo' => Algerb::Files.new('foo',
+                    'foo' => Algerb::Files.new('foo', {
                       'bar.rb' => Algerb::File.new('bar.rb'),
                       'baz.rb' => Algerb::File.new('baz.rb'),
-                    )
+                    })
                   )
       }
     end
@@ -53,10 +53,10 @@ describe Algerb::FilesBuilder do
       it {
         should == Algerb::Files.root(
                     'foo' => Algerb::Files.new('foo',
-                      'bar' => Algerb::Files.new('bar',
+                      'bar' => Algerb::Files.new('bar', {
                         'baz.rb' => Algerb::File.new('baz.rb'),
                         'foo_bar.rb' => Algerb::File.new('foo_bar.rb'),
-                      )
+                      })
                     )
                   )
       }
