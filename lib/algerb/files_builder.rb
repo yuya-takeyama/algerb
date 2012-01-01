@@ -1,4 +1,6 @@
 class Algerb::FilesBuilder
+  include Algerb::Util
+
   attr_reader :files
 
   FILE_PATTERN = %r{^([a-z0-9\_\.])/?}
@@ -16,5 +18,10 @@ class Algerb::FilesBuilder
     end
     @files.add files
     self
+  end
+
+  def mkdir_p(path)
+    dir, rest = split_path_as_head_and_tail(path)
+    files.add(Algerb::Files.new(dir))
   end
 end

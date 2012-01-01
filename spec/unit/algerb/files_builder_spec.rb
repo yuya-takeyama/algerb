@@ -63,4 +63,23 @@ describe Algerb::FilesBuilder do
       }
     end
   end
+
+  describe '#mkdir_p' do
+    subject { builder.files }
+    before { builder.mkdir_p(path) }
+
+    shared_examples_for 'create directory correctly' do
+      it { should == expected }
+    end
+
+    context 'foo' do
+      let(:path) { 'foo' }
+      let(:expected) do
+        Algerb::Files.root(
+          'foo' => Algerb::Files.new('foo')
+        )
+      end
+      it_should_behave_like 'create directory correctly'
+    end
+  end
 end
