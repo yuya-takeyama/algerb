@@ -51,7 +51,6 @@ describe Algerb::FilesBuilder do
         builder.add('foo/bar/foo_bar.rb')
       end
       it {
-        pending
         should == Algerb::Files.root(
                     'foo' => Algerb::Files.new('foo',
                       'bar' => Algerb::Files.new('bar',
@@ -114,7 +113,7 @@ describe Algerb::FilesBuilder do
     context 'directories are conflicted' do
       before do
         builder.add('foo/bar/baz.rb')
-        builder.add('foo/bar')
+        builder.mkdir_p('foo/bar')
       end
 
       it {

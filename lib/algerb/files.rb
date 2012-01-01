@@ -14,13 +14,7 @@ class Algerb::Files
   end
 
   def add(file)
-    if @files.has_key?(file.name)
-      file.files.each do |name, _file|
-        @files[file.name].files[name] = _file
-      end
-    else
-      @files[file.name] = file
-    end
+    @files[file.name] = file unless @files.has_key?(file.name)
     self
   end
 
