@@ -16,7 +16,7 @@ end
 Jeweler::RubygemsDotOrgTasks.new
 
 require 'cucumber/rake/task'
-Cucumber::Rake::Task.new
+Cucumber::Rake::Task.new(:features)
 
 require 'rspec/core/rake_task'
 desc 'Run RSpec'
@@ -33,7 +33,7 @@ Rcov::RcovTask.new do |test|
 end
 
 desc 'Run tests, both RSpec and Cucumber'
-task :test => [:spec, :cucumber]
+task :test => [:spec, :features]
 
 task :default => :test
 
