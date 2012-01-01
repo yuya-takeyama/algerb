@@ -8,6 +8,10 @@ class Algerb::Files
     @files = files
   end
 
+  def self.root(files = {})
+    new(nil, files)
+  end
+
   def add(file)
     if @files.has_key?(file.name)
       file.files.each do |name, _file|
