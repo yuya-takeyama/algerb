@@ -1,5 +1,6 @@
 class Algerb::Files
   include ::Enumerable
+  include Algerb::Util
 
   attr_reader :name, :files
 
@@ -24,7 +25,7 @@ class Algerb::Files
   end
 
   def find_by_path(path)
-    next_path, rest = path.split('/', 2)
+    next_path, rest = split_path_as_head_and_tail(path)
     if files.has_key?(next_path)
       found = files[next_path]
       if found.is_a?(Algerb::Files)
