@@ -44,5 +44,87 @@ describe Algerb::FilesBuilder do
                   )
       }
     end
+
+    context 'when a files is added to nested directory' do
+      before do
+        builder.add('foo/bar/baz.rb')
+        builder.add('foo/bar/foo_bar.rb')
+      end
+      it {
+        should == Algerb::Files.root(
+                    'foo' => Algerb::Files.new('foo',
+                      'bar' => Algerb::Files.new('bar',
+                        'baz.rb' => Algerb::File.new('baz.rb'),
+                        'foo_bar.rb' => Algerb::File.new('foo_bar.rb'),
+                      )
+                    )
+                  )
+      }
+    end
+  end
+
+  describe '#mkdir_p' do
+    subject { builder.files }
+
+    shared_examples_for 'create directory correctly' do
+      it { should == expected }
+    end
+
+    context 'no directories are conflicted' do
+      before { builder.mkdir_p(path) }
+
+      context 'foo' do
+        let(:path) { 'foo' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo')
+          )
+        end
+        it_should_behave_like 'create directory correctly'
+      end
+
+      context 'foo/bar' do
+        let(:path) { 'foo/bar' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo',
+              'bar' => Algerb::Files.new('bar')
+            )
+          )
+        end
+        it_should_behave_like 'create directory correctly'
+      end
+
+      context 'foo/bar/baz' do
+        let(:path) { 'foo/bar/baz' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo',
+              'bar' => Algerb::Files.new('bar',
+                'baz' => Algerb::Files.new('baz')
+              )
+            )
+          )
+        end
+        it_should_behave_like 'create directory correctly'
+      end
+    end
+
+    context 'directories are conflicted' do
+      before do
+        builder.add('foo/bar/baz.rb')
+        builder.mkdir_p('foo/bar')
+      end
+
+      it {
+        should == Algerb::Files.root(
+          'foo' => Algerb::Files.new('foo',
+            'bar' => Algerb::Files.new('bar',
+              'baz.rb' => Algerb::File.new('baz.rb')
+            )
+          )
+        )
+      }
+    end
   end
 end
