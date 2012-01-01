@@ -23,6 +23,10 @@ class Algerb::Files
     self
   end
 
+  def find_by_path(path)
+    files[path] if files.has_key?(path)
+  end
+
   def ==(another)
     self.name == another.name and self.files == another.files
   end

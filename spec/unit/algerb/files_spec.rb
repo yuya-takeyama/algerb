@@ -48,4 +48,17 @@ describe Algerb::Files do
       it { should == {'foo' => dir1, 'bar' => dir2} }
     end
   end
+
+  describe '#find_by_path' do
+    context 'when no files are matched' do
+      subject { root.find_by_path('foo.rb') }
+      it { should be_nil }
+    end
+
+    context 'when a file is matched in the root' do
+      before { root.add(Algerb::File.new('foo.rb')) }
+      subject { root.find_by_path('foo.rb') }
+      it { should == Algerb::File.new('foo.rb') }
+    end
+  end
 end
