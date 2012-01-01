@@ -72,40 +72,42 @@ describe Algerb::FilesBuilder do
       it { should == expected }
     end
 
-    context 'foo' do
-      let(:path) { 'foo' }
-      let(:expected) do
-        Algerb::Files.root(
-          'foo' => Algerb::Files.new('foo')
-        )
-      end
-      it_should_behave_like 'create directory correctly'
-    end
-
-    context 'foo/bar' do
-      let(:path) { 'foo/bar' }
-      let(:expected) do
-        Algerb::Files.root(
-          'foo' => Algerb::Files.new('foo',
-            'bar' => Algerb::Files.new('bar')
+    context 'no directories are conflicted' do
+      context 'foo' do
+        let(:path) { 'foo' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo')
           )
-        )
+        end
+        it_should_behave_like 'create directory correctly'
       end
-      it_should_behave_like 'create directory correctly'
-    end
 
-    context 'foo/bar/baz' do
-      let(:path) { 'foo/bar/baz' }
-      let(:expected) do
-        Algerb::Files.root(
-          'foo' => Algerb::Files.new('foo',
-            'bar' => Algerb::Files.new('bar',
-              'baz' => Algerb::Files.new('baz')
+      context 'foo/bar' do
+        let(:path) { 'foo/bar' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo',
+              'bar' => Algerb::Files.new('bar')
             )
           )
-        )
+        end
+        it_should_behave_like 'create directory correctly'
       end
-      it_should_behave_like 'create directory correctly'
+
+      context 'foo/bar/baz' do
+        let(:path) { 'foo/bar/baz' }
+        let(:expected) do
+          Algerb::Files.root(
+            'foo' => Algerb::Files.new('foo',
+              'bar' => Algerb::Files.new('bar',
+                'baz' => Algerb::Files.new('baz')
+              )
+            )
+          )
+        end
+        it_should_behave_like 'create directory correctly'
+      end
     end
   end
 end
