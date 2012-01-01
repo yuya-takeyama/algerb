@@ -44,5 +44,23 @@ describe Algerb::FilesBuilder do
                   )
       }
     end
+
+    context 'when a files is added to nested directory' do
+      before do
+        builder.add('foo/bar/baz.rb')
+        builder.add('foo/bar/foo_bar.rb')
+      end
+      it {
+        pending
+        should == Algerb::Files.root(
+                    'foo' => Algerb::Files.new('foo',
+                      'bar' => Algerb::Files.new('bar',
+                        'baz.rb' => Algerb::File.new('baz.rb'),
+                        'foo_bar.rb' => Algerb::File.new('foo_bar.rb'),
+                      )
+                    )
+                  )
+      }
+    end
   end
 end
