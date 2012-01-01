@@ -11,4 +11,5 @@ group :development do
   gem 'guard-rspec'
   gem 'jeweler', '~> 1.6.4'
   gem 'rcov', '>= 0'
+  gem 'rdoc', '~> 3.12'
 end
