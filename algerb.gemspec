@@ -4,15 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{algerb}
-  s.version = "0.0.1"
+  s.name = "algerb"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Yuya Takeyama"]
-  s.date = %q{2011-12-31}
-  s.default_executable = %q{algerb}
-  s.description = %q{Generates autoloader script for your Ruby library.}
-  s.email = %q{sign.of.the.wolf.pentagram@gmail.com}
+  s.date = "2012-01-01"
+  s.description = "Generates autoloader script for your Ruby library."
+  s.email = "sign.of.the.wolf.pentagram@gmail.com"
   s.executables = ["algerb"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -21,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".rspec",
     ".travis.yml",
+    "CHANGELOG.rdoc",
     "Gemfile",
     "Gemfile.lock",
     "Guardfile",
@@ -47,11 +47,11 @@ Gem::Specification.new do |s|
     "spec/unit/algerb/generator_spec.rb",
     "spec/unit/algerb/util_spec.rb"
   ]
-  s.homepage = %q{http://github.com/yuya-takeyama/algerb}
+  s.homepage = "http://github.com/yuya-takeyama/algerb"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Autoloader generator for Ruby}
+  s.rubygems_version = "1.8.10"
+  s.summary = "Autoloader generator for Ruby"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
