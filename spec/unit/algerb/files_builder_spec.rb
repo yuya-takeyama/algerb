@@ -66,13 +66,14 @@ describe Algerb::FilesBuilder do
 
   describe '#mkdir_p' do
     subject { builder.files }
-    before { builder.mkdir_p(path) }
 
     shared_examples_for 'create directory correctly' do
       it { should == expected }
     end
 
     context 'no directories are conflicted' do
+      before { builder.mkdir_p(path) }
+
       context 'foo' do
         let(:path) { 'foo' }
         let(:expected) do
@@ -108,6 +109,23 @@ describe Algerb::FilesBuilder do
         end
         it_should_behave_like 'create directory correctly'
       end
+    end
+
+    context 'directories are conflicted' do
+      before do
+        builder.add('foo/bar/baz.rb')
+        builder.add('foo/bar')
+      end
+
+      it {
+        should == Algerb::Files.root(
+          'foo' => Algerb::Files.new('foo',
+            'bar' => Algerb::Files.new('bar',
+              'baz.rb' => Algerb::File.new('baz.rb')
+            )
+          )
+        )
+      }
     end
   end
 end
