@@ -21,7 +21,12 @@ class Algerb::FilesBuilder
   end
 
   def mkdir_p(path)
-    dir, rest = split_path_as_head_and_tail(path)
-    files.add(Algerb::Files.new(dir))
+    target = files
+    while path
+      dir, path = split_path_as_head_and_tail(path)
+      new_dir = Algerb::Files.new(dir)
+      target.add(new_dir)
+      target = new_dir
+    end
   end
 end
