@@ -14,4 +14,8 @@ module Algerb::Util
   def remove_ext(path)
     path.sub(/\.rb$/, '')
   end
+
+  def split_dir_and_file(path)
+    path.scan(%r{^(?:(.*)/)?([^/]+)$})[0]
+  end
 end

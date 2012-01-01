@@ -75,4 +75,23 @@ describe Algerb::Util do
       it { should == 'foo/bar' }
     end
   end
+
+  describe '#split_dir_and_file' do
+    subject { split_dir_and_file(path) }
+
+    context 'foo.rb' do
+      let(:path) { 'foo.rb' }
+      it { should == [nil, 'foo.rb'] }
+    end
+
+    context 'foo/bar.rb' do
+      let(:path) { 'foo/bar.rb' }
+      it { should == ['foo', 'bar.rb'] }
+    end
+
+    context 'foo/bar/baz.rb' do
+      let(:path) { 'foo/bar/baz.rb' }
+      it { should == ['foo/bar', 'baz.rb'] }
+    end
+  end
 end
