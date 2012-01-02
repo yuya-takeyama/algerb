@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bundler'
 Bundler.setup(:default, :development)
-require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
