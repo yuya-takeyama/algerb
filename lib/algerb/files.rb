@@ -33,6 +33,6 @@ class Algerb::Files
   end
 
   def ==(another)
-    self.name == another.name and self.files == another.files
+    name == another.name and files == another.files
   end
 end
