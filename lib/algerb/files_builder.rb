@@ -3,8 +3,6 @@ class Algerb::FilesBuilder
 
   attr_reader :files
 
-  FILE_PATTERN = %r{^([a-z0-9\_\.])/?}
-
   def initialize
     @files = Algerb::Files.new
   end
