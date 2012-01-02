@@ -4,6 +4,7 @@ gem 'thor'
 
 group :development do
   gem 'rake'
+  gem 'guard', '~> 0.10.0'
   gem 'cucumber'
   gem 'aruba'
   gem 'guard-cucumber'
